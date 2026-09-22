@@ -3,8 +3,8 @@
 
 # ¿Què tecnologia utiliza?
     PHP version 8.3.16 o superior
-    CSS3
-    HTML5
+    CSS
+    HTML5 
 
 # ¿Què se necesita instalar?
     Se necesita PHP,Visual studio code u otro editor de texto, MariaDB que ya contiene MySQL y en conjunto usando la herramienta HeidiSQL, Laragon o XAMPP para levantar el servidor local
