@@ -1,3 +1,4 @@
+
 name: Pruebas automatizadas - Inventario
 
 on:
@@ -44,7 +45,7 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: '8.2'
-          extensions: pdo_mysql
+          extensions: pdo_mysql, mbstring
 
       - name: Verificar sintaxis
         run: |

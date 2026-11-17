@@ -16,6 +16,15 @@ $casosCantidad = [
     ["abc", false],
 ];
 
+$casosUbicacion = [
+    ["Bodega", true],
+    ["Local 123", true],
+    ["Casa", false],
+    ["Almacenamiento principal", false],
+    ["     ", false],
+];
+
+
 $total = 0;
 $aprobadas = 0;
 $fallidas = 0;
@@ -51,6 +60,24 @@ foreach ($casosCantidad as [$entrada, $esperado]) {
         echo "$etiquetaEntrada: no paso (falló)\n";
     }
 }
+
+
+echo "\n--- Validación de Ubicación ---\n";
+
+foreach ($casosUbicacion as [$entrada, $esperado]) {
+    $total++;
+
+    $obtenido = validarUbicacion($entrada);
+
+    if ($obtenido === $esperado) {
+        $aprobadas++;
+        echo "$entrada: paso\n";
+    } else {
+        $fallidas++;
+        echo "$entrada: no paso (falló)\n";
+    }
+}
+
 
 echo "\nPruebas realizadas: $total | Aprobadas: $aprobadas | Fallidas: $fallidas\n";
 

@@ -25,3 +25,12 @@ function validarCantidadProducto($cantidad): bool
         ['options' => ['min_range' => 0]]
     ) !== false;
 }
+function validarUbicacion(string $ubicacion): bool
+{
+    $ubicacion = trim($ubicacion);
+
+    $longitud = mb_strlen($ubicacion, 'UTF-8');
+
+    return $longitud >= 5 && $longitud <= 20;
+        
+}

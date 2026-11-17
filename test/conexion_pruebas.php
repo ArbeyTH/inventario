@@ -1,7 +1,8 @@
+
 <?php
 
 $servidor = getenv('DB_HOST') ?: 'localhost';
-$baseDatos = getenv('DB_NAME') ?: 'inventario';
+$baseDatos = getenv('DB_NAME') ?: 'inventario_pruebas';
 $usuario = getenv('DB_USER') ?: 'root';
 
 $contrasena = getenv('DB_PASSWORD');

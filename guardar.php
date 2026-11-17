@@ -10,16 +10,18 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 
 //Obtener los datos del formulario
 $nombre = $_POST['nombre'] ?? '';
+$ubicacion = $_POST['ubicacion'] ?? '';
 $cantidad = $_POST['cantidad'] ?? '';
 
 // Comprobar que los datos tengan el tipo esperado
-if (!is_string($nombre) || !is_string($cantidad)) {
+if (!is_string($nombre) || !is_string($ubicacion) || !is_string($cantidad)) {
     header('Location: index.php?estado=incompleto');
     exit;
 }
 
 // Eliminar espacios innecesarios
 $nombre = trim($nombre);
+$ubicacion = trim($ubicacion);
 $cantidad = trim($cantidad);
 
 // Verificar campos vacíos
@@ -34,6 +36,13 @@ if (!validarNombreProducto($nombre)) {
     exit;
 }
 
+
+// Validar la ubicación
+if (!validarUbicacion($ubicacion)) {
+    header('Location: index.php?estado=ubicacion_invalida');
+    exit;
+}
+
 // Validar la cantidad
 if (!validarCantidadProducto($cantidad)) {
     header('Location: index.php?estado=cantidad_invalida');
@@ -42,12 +51,13 @@ if (!validarCantidadProducto($cantidad)) {
 
 // Guardar en la base de datos
 $sentencia = $conexion->prepare(
-    'INSERT INTO productos (nombre, cantidad)
-     VALUES (:nombre, :cantidad)'
+    'INSERT INTO productos (nombre, ubicacion, cantidad)
+     VALUES (:nombre, :ubicacion, :cantidad)'
 );
 
 $sentencia->execute([
     'nombre' => $nombre,
+    'ubicacion' => $ubicacion,
     'cantidad' => (int) $cantidad
 ]);
 

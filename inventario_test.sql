@@ -1,8 +1,9 @@
+
 -- MariaDB dump 10.19  Distrib 10.4.32-MariaDB, for Win64 (AMD64)
 --
 -- Host: localhost    Database: inventario
 -- ------------------------------------------------------
--- Server version	10.4.32-MariaDB
+-- Server version  10.4.32-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -20,15 +21,19 @@
 --
 
 DROP TABLE IF EXISTS `productos`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
+
+/*!40101 SET @saved_cs_client = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
+
 CREATE TABLE `productos` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `nombre` varchar(60) NOT NULL,
+  `ubicacion` varchar(20) NOT NULL DEFAULT '',
   `cantidad` int(11) NOT NULL,
   `fecharegistro` timestamp NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -36,12 +41,21 @@ CREATE TABLE `productos` (
 --
 
 LOCK TABLES `productos` WRITE;
-/*!40000 ALTER TABLE `productos` DISABLE KEYS */;
-INSERT INTO `productos` VALUES (1,'Refresco',10,'2026-09-13 04:12:33'),(2,'galletas',20,'2026-09-13 04:12:33'),(3,'cereal',5,'2026-09-13 04:12:33');
-/*!40000 ALTER TABLE `productos` ENABLE KEYS */;
-UNLOCK TABLES;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
+/*!40000 ALTER TABLE `productos` DISABLE KEYS */;
+
+INSERT INTO `productos`
+(`id`, `nombre`, `ubicacion`, `cantidad`, `fecharegistro`)
+VALUES
+(1, 'Refresco', '', 10, '2026-09-13 04:12:33'),
+(2, 'galletas', '', 20, '2026-09-13 04:12:33'),
+(3, 'cereal', '', 5, '2026-09-13 04:12:33');
+
+/*!40000 ALTER TABLE `productos` ENABLE KEYS */;
+
+UNLOCK TABLES;
+
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
 /*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
